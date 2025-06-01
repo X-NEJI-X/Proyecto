@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Procesar Pago</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: {
+              50: '#f0f9ff',
+              100: '#e0f2fe',
+              200: '#bae6fd',
+              300: '#7dd3fc',
+              500: '#3b82f6'
+            },
+            success: {
+              500: '#22c55e'
+            }
+          },
+          boxShadow: {
+            card: '0 4px 20px rgba(0, 0, 0, 0.08)'
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f8fafc;
+    }
+    .card-preview {
+      background: linear-gradient(135deg, #3b82f6, #7dd3fc);
+      border-radius: 12px;
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+    .card-chip {
+      width: 40px;
+      height: 30px;
+      background: linear-gradient(135deg, #e2e8f0, #cbd5e1);
+      border-radius: 5px;
+      position: absolute;
+      top: 20px;
+      left: 20px;
+    }
+    .card-chip:after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, 
+        rgba(255,255,255,0.3) 0%, 
+        rgba(255,255,255,0.1) 50%, 
+        rgba(255,255,255,0.3) 100%);
+      border-radius: 5px;
+    }
+    .form-input:focus {
+      border-color: #3b82f6;
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+    }
+  </style>
+</head>
+<body class="min-h-screen flex items-center justify-center p-4">
+  <div class="max-w-5xl w-full grid md:grid-cols-2 gap-8">
+    <!-- Tarjeta de crédito visual -->
+    <div class="bg-white rounded-xl shadow-card p-6 h-fit">
+      <div class="mb-6">
+        <div class="flex items-center mb-2">
+          <h1 class="text-xl font-semibold text-gray-800 mr-2">Información de Pago</h1>
+          <i class="fas fa-credit-card text-primary-500"></i>
+        </div>
+        <p class="text-gray-500 text-sm">Complete los detalles de su tarjeta</p>
+      </div>
+      
+      <div class="card-preview p-6 mb-6 h-44">
+        <div class="card-chip"></div>
+        <div class="absolute top-1/2 left-6 right-6 transform -translate-y-1/2">
+          <div class="text-xl tracking-widest font-medium mb-6" id="cardNumberPreview">•••• •••• •••• ••••</div>
+          <div class="flex justify-between items-end">
+            <div>
+              <div class="text-xs opacity-80">TITULAR</div>
+              <div class="text-sm font-medium uppercase tracking-wider" id="cardNamePreview">NOMBRE DEL TITULAR</div>
+            </div>
+            <div>
+              <div class="text-xs opacity-80">EXPIRA</div>
+              <div class="text-sm font-medium" id="cardExpiryPreview">MM/AA</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="flex items-center text-sm text-gray-500">
+        <i class="fas fa-lock text-success-500 mr-2"></i>
+        <span>Pago seguro con encriptación SSL</span>
+      </div>
+    </div>
+    
+    <!-- Formulario de pago -->
+    <div class="bg-white rounded-xl shadow-card p-6">
+      <div class="mb-6">
+        <h2 class="text-xl font-semibold text-gray-800">Detalles del Pago</h2>
+        <p class="text-gray-500 text-sm">Ingrese la información requerida para procesar su transacción</p>
+      </div>
+      
+      <form id='formularioPayment' class="space-y-4">
+        <div>
+          <label for="correo" class="block text-sm font-medium text-gray-700 mb-1">Correo Electrónico</label>
+          <input type="email" id="correo" name="correo" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-300 focus:border-primary-500 transition" placeholder="tucorreo@ejemplo.com" required>
+        </div>
+        
+        <div>
+          <label for="nombreTitular" class="block text-sm font-medium text-gray-700 mb-1">Nombre del Titular</label>
+          <input type="text" id="nombreTitular" name="nombreTitular" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-300 focus:border-primary-500 transition" placeholder="Como aparece en la tarjeta" required>
+        </div>
+        
+        <div>
+          <label for="cardNumber" class="block text-sm font-medium text-gray-700 mb-1">Número de Tarjeta</label>
+          <select name="cardNumber" id="cardNumber" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-300 focus:border-primary-500 transition" required>
+            <option value="" disabled selected>Seleccione una tarjeta de prueba</option>
+            <option value="4111111111111111">Visa: 4111 1111 1111 1111</option>
+            <option value="5555555555554444">Mastercard: 5555 5555 5555 4444</option>
+            <option value="378282246310005">Amex: 3782 822463 10005</option>
+            <option value="6011111111111117">Discover: 6011 1111 1111 1117</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="descripcion" class="block text-sm font-medium text-gray-700 mb-1">Descripción</label>
+          <input type="text" id="descripcion" name="descripcion" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-300 focus:border-primary-500 transition" placeholder="Ingresa descripción del pago" required>
+        </div>
+        
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">Fecha de Expiración</label>
+            <div class="flex gap-2">
+              <select id="expMonth" name="expMonth" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-300 focus:border-primary-500 transition" required>
+                <option value="" disabled selected>Mes</option>
+                <% for(let i = 1; i <= 12; i++) { %>
+                  <option value="<%= i < 10 ? '0' + i : i %>"><%= i < 10 ? '0' + i : i %></option>
+                <% } %>
+              </select>
+              <select id="expYear" name="expYear" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-300 focus:border-primary-500 transition" required>
+                <option value="" disabled selected>Año</option>
+                <% const currentYear = new Date().getFullYear(); %>
+                <% for(let i = 0; i < 10; i++) { %>
+                  <option value="<%= currentYear + i %>"><%= currentYear + i %></option>
+                <% } %>
+              </select>
+            </div>
+          </div>
+          
+          <div>
+            <label for="cvv" class="block text-sm font-medium text-gray-700 mb-1">Código de Seguridad</label>
+            <input type="text" id="cvv" name="cvv" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-300 focus:border-primary-500 transition" placeholder="123" pattern="[0-9]{3,4}" required>
+          </div>
+        </div>
+        
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">Moneda</label>
+            <select id="currency" name="currency" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-300 focus:border-primary-500 transition" required>
+              <option value="USD">USD $</option>
+              <option value="EUR">EUR €</option>
+              <option value="GBP">GBP £</option>
+              <option value="JPY">JPY ¥</option>
+            </select>
+          </div>
+          
+          <div>
+            <label for="amount" class="block text-sm font-medium text-gray-700 mb-1">Monto</label>
+            <input type="number" id="amount" name="amount" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-300 focus:border-primary-500 transition" placeholder="0.00" min="0" step="0.01" required>
+          </div>
+        </div>
+        
+        <button type="submit" class="w-full bg-primary-500 hover:bg-primary-600 text-white font-medium py-3 px-4 rounded-lg transition duration-200 flex items-center justify-center mt-6">
+          <i class="fas fa-lock mr-2"></i> Confirmar Pago
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <script src='js/fetch2.js'></script>
+  <script>
+    // Actualización en tiempo real de la tarjeta de vista previa
+    document.getElementById('nombreTitular').addEventListener('input', function(e) {
+      document.getElementById('cardNamePreview').textContent = e.target.value.toUpperCase() || 'NOMBRE DEL TITULAR';
+    });
+
+    document.getElementById('cardNumber').addEventListener('change', function(e) {
+      const value = e.target.value;
+      const last4 = value.slice(-4);
+      document.getElementById('cardNumberPreview').textContent = `•••• •••• •••• ${last4}`;
+    });
+
+    document.getElementById('expMonth').addEventListener('change', updateExpiry);
+    document.getElementById('expYear').addEventListener('change', updateExpiry);
+
+    function updateExpiry() {
+      const month = document.getElementById('expMonth').value || 'MM';
+      const year = document.getElementById('expYear').value.slice(-2) || 'AA';
+      document.getElementById('cardExpiryPreview').textContent = `${month}/${year}`;
+    }
+  </script>
+</body>
+</html>

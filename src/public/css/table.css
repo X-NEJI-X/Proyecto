@@ -1,0 +1,306 @@
+:root {
+  --primary-color: #4CAF50;
+  --primary-dark: #388E3C;
+  --primary-light: #C8E6C9;
+  --secondary-color: #FF9800;
+  --dark-color: #212121;
+  --light-color: #ad9e9e;
+  --gray-color: #757575;
+  --white-color: #ffffff;
+  --error-color: #f44336;
+  --font-primary: 'Poppins', sans-serif;
+  --font-secondary: 'Roboto', sans-serif;
+  --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --transition: all 0.3s ease;
+}
+
+.contacts-container {
+  font-family: var(--font-primary);
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 1.5rem;
+}
+
+.contacts-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--primary-light);
+}
+
+.contacts-title {
+  font-size: 1.8rem;
+  color: var(--dark-color);
+  font-weight: 600;
+  margin: 0;
+}
+
+.contacts-count {
+  background-color: var(--primary-color);
+  color: var(--white-color);
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.count-number {
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.table-responsive {
+  overflow-x: auto;
+  border-radius: 8px;
+  box-shadow: var(--box-shadow);
+}
+
+.contacts-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background-color: var(--white-color);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.contacts-table thead tr {
+  background-color: var(--primary-color);
+  color: var(--white-color);
+  text-align: left;
+}
+
+.contacts-table th {
+  padding: 1.2rem 1.5rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 0.5px;
+}
+
+.contacts-table tbody tr {
+  transition: var(--transition);
+  border-bottom: 1px solid var(--primary-light);
+}
+
+.contacts-table tbody tr:last-child {
+  border-bottom: none;
+}
+
+.contacts-table tbody tr:hover {
+  background-color: var(--primary-light);
+}
+
+.contacts-table td {
+  padding: 1.2rem 1.5rem;
+  vertical-align: middle;
+  color: var(--gray-color);
+}
+
+.contact-name {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-weight: 500;
+  color: var(--dark-color);
+}
+
+.name-avatar {
+  width: 36px;
+  height: 36px;
+  background-color: var(--primary-color);
+  color: var(--white-color);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.contact-email a {
+  color: var(--primary-dark);
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.contact-email a:hover {
+  color: var(--secondary-color);
+  text-decoration: underline;
+}
+
+.contact-comment {
+  max-width: 250px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.contact-ip {
+  font-family: var(--font-secondary);
+  font-size: 0.85rem;
+  color: var(--gray-color);
+  background-color: #f5f5f5;
+  padding: 0.3rem 0.6rem;
+  border-radius: 4px;
+  display: inline-block;
+}
+
+.contact-date {
+  font-size: 0.85rem;
+}
+
+.date-day {
+  font-weight: 500;
+  color: var(--dark-color);
+}
+
+.date-time {
+  color: var(--gray-color);
+  font-size: 0.8rem;
+}
+
+.no-contacts {
+  text-align: center;
+  padding: 3rem 0;
+  background-color: var(--white-color);
+  border-radius: 8px;
+  box-shadow: var(--box-shadow);
+}
+
+.no-contacts-img {
+  width: 150px;
+  height: auto;
+  margin-bottom: 1.5rem;
+  opacity: 0.7;
+}
+
+.no-contacts-text {
+  color: var(--gray-color);
+  font-size: 1.1rem;
+  margin: 0;
+}
+
+/* Estilos para móvil */
+@media screen and (max-width: 768px) {
+  .contacts-container {
+    padding: 0 1rem;
+  }
+  
+  .contacts-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  
+  .contacts-table {
+    border: 0;
+    box-shadow: none;
+    background: transparent;
+  }
+  
+  .contacts-table thead {
+    display: none;
+  }
+  
+  .contacts-table tr {
+    display: block;
+    margin-bottom: 1.5rem;
+    background-color: var(--white-color);
+    border-radius: 8px;
+    box-shadow: var(--box-shadow);
+    padding: 1rem;
+  }
+  
+  .contacts-table td {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--primary-light);
+  }
+  
+  .contacts-table td::before {
+    content: attr(data-label);
+    font-weight: 600;
+    color: var(--primary-dark);
+    margin-right: 1rem;
+    font-size: 0.85rem;
+  }
+  
+  .contacts-table td:last-child {
+    border-bottom: none;
+  }
+  
+  .name-avatar {
+    display: none;
+  }
+  
+  .contact-comment {
+    max-width: 100%;
+    white-space: normal;
+  }
+}
+  /* Estilos específicos para pagos */
+        .payment-card {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .card-avatar {
+            width: 36px;
+            height: 36px;
+            background-color: var(--secondary-color);
+            color: var(--white-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+        }
+        
+        .card-details {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .card-number {
+            font-family: 'Courier New', monospace;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+        }
+        
+        .card-type {
+            margin-top: 0.2rem;
+            font-size: 0.8rem;
+            color: var(--gray-color);
+        }
+        
+        .card-expiry {
+            background-color: #f5f5f5;
+            padding: 0.3rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            display: inline-block;
+        }
+        
+        .payment-amount {
+            font-weight: 600;
+            color: var(--primary-dark);
+            font-size: 1.1rem;
+        }
+        
+        .payment-currency {
+            color: var(--gray-color);
+            font-size: 0.85rem;
+            margin-top: 0.2rem;
+        }
+        
+        .fa-cc-visa { color: #1a1f71; }
+        .fa-cc-mastercard { color: #eb001b; }
+        .fa-cc-amex { color: #016fd0; }

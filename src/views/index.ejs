@@ -1,5 +1,23 @@
-  <link rel="stylesheet" href="./styles.css">
-  <header class="header">
+  <!DOCTYPE html>
+  <html>
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="css/estilos.css">
+      <title>Pagina web</title>
+      <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+      <!-- Google tag (gtag.js) -->
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-7LDM2VCZHJ"></script>
+      <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'G-7LDM2VCZHJ');
+      </script>
+  </head>
+  <body>
+      <header class="header">
         <div class="container">
             <div class="logo">
                 <h1>Event<span>Space</span></h1>
@@ -13,8 +31,8 @@
                     <li><a href="#home">Inicio</a></li>
                     <li><a href="#services">Servicios</a></li>
                     <li><a href="#spaces">Espacios</a></li>
-                    <li><a href="#gallery">Galería</a></li>
-                    <li><a href="#contact">Contacto</a></li>
+                    <li><a href="/getPayment">Pagos</a></li>
+                    <li><a href="/admin/contacts">Contacto</a></li>
                 </ul>
             </nav>
         </div>
@@ -43,6 +61,7 @@
             <div class="container">
                 <h2 class="section-title">Nuestros Servicios</h2>
                 <div class="services-grid">
+
                     <div class="service-card">
                         <i class="fas fa-glass-cheers"></i>
                         <h3>Salones para Eventos</h3>
@@ -166,108 +185,108 @@
     </div>
 </section>
 
-        <!-- Sección Galería -->
-        <section id="gallery" class="gallery">
-            <div class="container">
-                <h2 class="section-title">Galería</h2>
-                <div class="gallery-grid">
-                    <div class="gallery-item">
-                        <img src="/images/como-organizar-evento-corporativo.jpg">
-                        <div class="gallery-overlay">
-                            <p>Evento Corporativo</p>
-                        </div>
-                    </div>
-                    <div class="gallery-item">
-                        <img src="/images/coworking.jpg">
-                        <div class="gallery-overlay">
-                            <p>Área Coworking</p>
-                        </div>
-                    </div>
-                    <div class="gallery-item">
-                        <img src="/images/boda.jpg">
-                        <div class="gallery-overlay">
-                            <p>Celebración de Boda</p>
-                        </div>
-                    </div>
-                    <div class="gallery-item">
-                        <img src="/images/conferencia.jpg">
-                        <div class="gallery-overlay">
-                            <p>Conferencia</p>
-                        </div>
-                    </div>
+<!-- Sección Galería -->
+<section id="gallery" class="gallery">
+    <div class="container">
+        <h2 class="section-title">Galería</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="/images/como-organizar-evento-corporativo.jpg">
+                <div class="gallery-overlay">
+                    <p>Evento Corporativo</p>
                 </div>
             </div>
-        </section>
-
-        <!-- Sección Contacto -->
-        <section id="contact" class="contact">
-            <div class="container">
-                <h2 class="section-title">Contáctanos</h2>
-                <div class="contact-content">
-                    <div class="contact-info">
-                        <h3>Información de Contacto</h3>
-                        <p><i class="fas fa-map-marker-alt"></i> Av. Terminal, Ciudad San juan de los morros</p>
-                        <p><i class="fas fa-phone"></i> +584128562832</p>
-                        <p><i class="fas fa-envelope"></i> info@eventspace.com</p>
-                        <div class="social-links">
-                            <a href="#"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#"><i class="fab fa-instagram"></i></a>
-                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                            <a href="#"><i class="fab fa-twitter"></i></a>
-                        </div>
-                    </div>
-                    <div class="contact-form">
-                        <form>
-                            <div class="form-group">
-                                <input type="text" placeholder="Nombre" required>
-                            </div>
-                            <div class="form-group">
-                                <input type="email" placeholder="Email" required>
-                            </div>
-                            <div class="form-group">
-                                <input type="tel" placeholder="Teléfono">
-                            </div>
-                            <div class="form-group">
-                                <select>
-                                    <option value="">Tipo de Evento</option>
-                                    <option value="corporate">Corporativo</option>
-                                    <option value="wedding">Boda</option>
-                                    <option value="social">Evento Social</option>
-                                    <option value="coworking">Coworking</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <textarea placeholder="Mensaje" rows="5"></textarea>
-                            </div>
-                            <button type="submit" class="btn primary">Enviar Mensaje</button>
-                        </form>
-                    </div>
+            <div class="gallery-item">
+                <img src="/images/coworking.jpg">
+                <div class="gallery-overlay">
+                    <p>Área Coworking</p>
                 </div>
             </div>
-        </section>
-    </main>
-
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-about">
-                    <h3>EventSpace</h3>
-                    <p>Líderes en alquiler de espacios para eventos y coworking. Creamos ambientes perfectos para tus momentos especiales.</p>
-                </div>
-                <div class="footer-links">
-                    <h3>Enlaces Rápidos</h3>
-                    <ul>
-                        <li><a href="#home">Inicio</a></li>
-                        <li><a href="#services">Servicios</a></li>
-                        <li><a href="#spaces">Espacios</a></li>
-                        <li><a href="#gallery">Galería</a></li>
-                        <li><a href="#contact">Contacto</a></li>
-                    </ul>
+            <div class="gallery-item">
+                <img src="/images/boda.jpg">
+                <div class="gallery-overlay">
+                    <p>Celebración de Boda</p>
                 </div>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 EventSpace. <br>
-                Hecho con amor 💖</p>
+            <div class="gallery-item">
+                <img src="/images/conferencia.jpg">
+                <div class="gallery-overlay">
+                    <p>Conferencia</p>
+                </div>
             </div>
         </div>
-    </footer>
+    </div>
+</section>
+
+<!-- Sección Contacto -->
+<section id="contact" class="contact">
+    <div class="container">
+        <h2 class="section-title">Contáctanos</h2>
+        <div class="contact-content">
+            <div class="contact-info">
+                <h3>Información de Contacto</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Av. Terminal, Ciudad San juan de los morros</p>
+                <p><i class="fas fa-phone"></i> +584128562832</p>
+                <p><i class="fas fa-envelope"></i> info@eventspace.com</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+            <div class="contact-form">
+                <form id="formulario">
+                    <div class="form-group">
+                        <input type="text" placeholder="Nombre" id="nombre" name="nombre" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" name="email" id="email" placeholder="Email" required>
+                    </div>
+                    <div class="form-group">
+                        <input required type="text" name="comentario" id="comentario" placeholder="comentario">
+                    </div>
+
+                    <!-- reCAPTCHA -->
+                    <div class="g-recaptcha" data-sitekey="<%=sitioKey%>"></div>
+
+
+                    <button type="submit" class="btn primary">Enviar Mensaje</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+</main>
+
+<footer class="footer">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-about">
+                <h3>EventSpace</h3>
+                <p>Líderes en alquiler de espacios para eventos y coworking. Creamos ambientes perfectos para tus momentos especiales.</p>
+            </div>
+            <div class="footer-links">
+                <h3>Enlaces Rápidos</h3>
+                <ul>
+                    <li><a href="#home">Inicio</a></li>
+                    <li><a href="#services">Servicios</a></li>
+                    <li><a href="#spaces">Espacios</a></li>
+                    <li><a href="#gallery">Galería</a></li>
+                    <li><a href="#contact">Contacto</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 EventSpace. <br>
+            Hecho con amor 💖</p>
+        </div>
+    </div>
+</footer>
+<script src="/js/fetch.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html> 
+
+
+
